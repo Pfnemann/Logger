@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "sourceRoot": "src",
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "name": "christoph",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "nedb": "^1.8.0",
+    "node-uuid": "^1.4.7",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.2"
+  },
+  "devDependencies": {
+    "express-session": "^1.14.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "christoph",
+  "license": "ISC",
+  "description": ""
+}

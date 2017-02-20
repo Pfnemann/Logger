@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log-Service</title>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/log.ico">
+    <script src="javascripts/jquery-3.1.0.min.js"></script>
+    <script src="javascripts/jquery-ui.min.js"></script>
+    <script src="javascripts/site-functions.js"></script>
+</head>
+<body>
+
+<div class="flex-container">
+    <div class="flex-item">
+        <div id="menu-bar">
+            <ul id="menu">
+                <li>
+                    <div tag="item_1"><span class="ui-icon ui-icon-refresh"></span>Liste aktualisieren</div>
+                </li>
+                <li>
+                    <div tag="item_2"><span class="ui-icon ui-icon-search"></span>Filter zurücksetzen</div>
+                </li>
+                </li>
+                <li>-</li>
+                <li>
+                    <div tag="item_3"><span class="ui-icon ui-icon-person"></span>Benutzer wechseln</div>
+                </li>
+                <li>
+                    <div tag="item_4"><span class="ui-icon ui-icon-locked"></span>Abmelden</div>
+                </li>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="flex-item">
+        <div id="page-content">
+            <div class="inputs">
+                <span class="ownLabel w3-white">Type: </span>
+                <input id="typeInput" class="w3-input w3-border w3-hover-light-blue" type="text">
+                <button id="searchType" class="w3-btn w3-blue w3-border" onclick="javascript:filterList();">
+                    <span>Filter</span></button>
+            </div>
+            <table id="customers" class="w3-table w3-bordered w3-striped w3-card-2">
+                <thead>
+                <tr class="w3-blue">
+                    <th>Type</th>
+                    <th>Zeit</th>
+                    <th>Nachricht</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="dataBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div id="logout-dialog" title="Abmelden erfolgreich">
+    <p>Sie haben sich erfolgreich vom System abgemeldet, ihre Sitzung wurde sicher beendet.</p>
+</div>
+
+<div id="login-form" title="Anmeldung">
+    <form>
+        <fieldset>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+            <label for="password">Passwort</label>
+            <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
+<div id="createLog" title="Eintrag erstellen">
+    <form>
+        <fieldset>
+            <label for="type">Typ</label>
+            <input type="text" name="type" id="type" value="" class="text ui-widget-content ui-corner-all">
+            <label for="msg">Nachricht</label>
+            <input type="text" name="msg" id="msg" value="" class="text ui-widget-content ui-corner-all">
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
