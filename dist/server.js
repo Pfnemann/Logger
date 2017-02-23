@@ -496,7 +496,7 @@ app.get("/logged", bodyParser.json(), function (req, res) {
     var sessionID = req.cookies["session-id"];
     if (sessionID) {
         res.header("Content-Type", "application/json");
-        res.end(JSON.stringify(req.cookies));
+        res.end(JSON.stringify(true));
     }
     else {
         res.header("Content-Type", "application/json");
@@ -614,7 +614,7 @@ app.get("/logs", bodyParser.json(), function (req, res) {
 });
 //###################### LOG #########################
 //##################### SECURE #######################
-var server = app.listen(8080, function () {
-    console.log("Logsystem bereit. Port: 8080.");
+var server = app.listen(8082, function () {
+    console.log("Logsystem bereit. Port: 8082.");
 });
 //# sourceMappingURL=server.js.map

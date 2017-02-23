@@ -7,7 +7,7 @@
 
 $(function () {
     // ### Funktionen welche beim Ausführen des Skriptes ausgeführt werden (Ähnlich Dokument.ready)
-    var isLogged = executeAjax('http://localhost:8082/logged', 'GET', 'json', '', false)
+    var isLogged = executeAjax('/logged', 'GET', 'json', '', false)
     // ### Wenn der Bentuzer beim Laden der Seite nicht eingeloggt ist wird der Login-Dialog aufgerufen
     if (isLogged == false) {
         setDialog();
@@ -72,8 +72,8 @@ $(function () {
 
 function logout() {
     //### Wenn ein benutzer angemeldet ist, wird an den Server die Anfrage zum Logout geschickt
-    if (executeAjax('http://localhost:8082/logged', 'GET', 'json', '', false)) {
-        executeAjax('http://localhost:8082/logout', 'POST', 'text', '', false);
+    if (executeAjax('/logged', 'GET', 'json', '', false)) {
+        executeAjax('/logout', 'POST', 'text', '', false);
         //### Anzeige des Abgemeldet Dialoges
         $("#logout-dialog").dialog("open");
     }
@@ -130,7 +130,7 @@ function setDialog() {
         valid = valid && checkLength(password, "password", 3, 16);
 
         if (valid) {
-            var fLogin = executeAjax('http://localhost:8082/login', 'POST', 'text', {
+            var fLogin = executeAjax('/login', 'POST', 'text', {
                 "name": name.val(),
                 "password": password.val()
             }, false)
@@ -230,7 +230,7 @@ function showCreateLog() {
         valid = valid && checkLength(msg, "message", 1, 255);
 
         if (valid) {
-            var fCreateLog = executeAjax('http://localhost:8082/log', 'POST', 'json', {
+            var fCreateLog = executeAjax('/log', 'POST', 'json', {
                 "type": type.val(),
                 "msg": msg.val(),
                 "time": new Date()
@@ -292,7 +292,7 @@ function showCreateLog() {
 }
 
 function initPageContentEx(filterText) {
-    var userList = executeAjax('http://localhost:8082/logs', 'GET', 'json');
+    var userList = executeAjax('/logs', 'GET', 'json');
     var listHTML = '';
     $.each(userList, function (index, M) {
         listHTML += '<table>';
@@ -313,7 +313,7 @@ function initPageContentEx(filterText) {
 
 function initPageContent(filterText) {
     // ### Holt sich die Liste der Logs vom Server, die Anfrage wird Base64 decodiert! (Letzter Parameter true)
-    var logList = executeAjax('http://localhost:8082/logs', 'GET', 'json', '', true);
+    var logList = executeAjax('/logs', 'GET', 'json', '', true);
     var table = document.getElementById('dataBody');
     table.innerHTML = "";
 
@@ -337,7 +337,7 @@ function addTableRow(table, M) {
     addTableData(tr, M.type);
     addTableData(tr, d);
     addTableData(tr, M.msg);
-    addTableButton(tr, "x", "w3-red", function() {executeAjax('http://localhost:8082/log/' + M._id, 'DELETE', 'json', '', false);});
+    addTableButton(tr, "x", "w3-red", function() {executeAjax('/log/' + M._id, 'DELETE', 'json', '', false);});
     table.appendChild(tr);
 }
 
@@ -418,6 +418,7 @@ function executeAjax(url, method, type, data, encode) {
         },
         beforeSend: function (xhr) {
             if (userInfo.isLogged() && encode) {
+                alert(encode);
                 xhr.setRequestHeader ("Authorization", "Basic " + btoa(userInfo.getBasicInfo()));
             }
         },
@@ -426,6 +427,7 @@ function executeAjax(url, method, type, data, encode) {
         },
         error: function (ex, textStatus, errorThrown) {
             returnValue = null;
+            //alert('Error: ' + errorThrown + '\nT-Status: ' + textStatus + '\nSrvStatus: ' + ex.status + '\nException: ' + ex.responseText);
         }
     })
 
