@@ -614,7 +614,7 @@ app.get("/logs", bodyParser.json(), function (req, res) {
 });
 //###################### LOG #########################
 //##################### SECURE #######################
-var server = app.listen(8082, function () {
-    console.log("Logsystem bereit. Port: 8082.");
+var server = app.listen(8080, function () {
+    console.log("Logsystem bereit. Port: 8080.");
 });
 //# sourceMappingURL=server.js.map

@@ -418,7 +418,7 @@ function executeAjax(url, method, type, data, encode) {
         },
         beforeSend: function (xhr) {
             if (userInfo.isLogged() && encode) {
-                alert(encode);
+                // alert(encode);
                 xhr.setRequestHeader ("Authorization", "Basic " + btoa(userInfo.getBasicInfo()));
             }
         },
