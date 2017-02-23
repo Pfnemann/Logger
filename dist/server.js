@@ -225,6 +225,13 @@ app.get("/users", bodyParser.json(), function (req, res) {
         }
     });
 });
+
+app.get("readinessProbe", bodyParser.json(), function(req,res) {
+    res.status(400);
+    res.header("Content-Type", "text/plain");
+    res.end("Server is ready");
+});
+
 app.get("/users/:name", bodyParser.json(), function (req, res) {
     var uriName = req.params.name;
     if (uriName) {
